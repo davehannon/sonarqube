@@ -106,12 +106,14 @@ public class ProvisionedActionTest {
         "    {" +
         "      \"uuid\":\"provisioned-uuid-1\"," +
         "      \"key\":\"provisioned-key-1\"," +
-        "      \"name\":\"provisioned-name-1\"" +
+        "      \"name\":\"provisioned-name-1\"," +
+        "      \"visibility\":\"private\"" +
         "    }," +
         "    {" +
         "      \"uuid\":\"provisioned-uuid-2\"," +
         "      \"key\":\"provisioned-key-2\"," +
-        "      \"name\":\"provisioned-name-2\"" +
+        "      \"name\":\"provisioned-name-2\"," +
+        "      \"visibility\":\"private\"" +
         "    }" +
         "  ]" +
         "}");

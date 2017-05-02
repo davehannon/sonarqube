@@ -41,6 +41,8 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static java.util.Optional.ofNullable;
 import static org.sonar.api.resources.Qualifiers.PROJECT;
 import static org.sonar.api.resources.Qualifiers.VIEW;
+import static org.sonar.server.project.Visibility.PRIVATE;
+import static org.sonar.server.project.Visibility.PUBLIC;
 import static org.sonar.server.ws.WsUtils.writeProtobuf;
 import static org.sonarqube.ws.WsProjects.SearchWsResponse.Component;
 import static org.sonarqube.ws.WsProjects.SearchWsResponse.newBuilder;
@@ -152,7 +154,7 @@ public class SearchAction implements ProjectsWsAction {
       .setKey(dto.key())
       .setName(dto.name())
       .setQualifier(dto.qualifier())
-      .setVisibility(dto.isPrivate() ? "private" : "public");
+      .setVisibility(dto.isPrivate() ? PRIVATE.getLabel() : PUBLIC.getLabel());
     return builder.build();
   }
 

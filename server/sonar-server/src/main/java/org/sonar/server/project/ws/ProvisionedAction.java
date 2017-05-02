@@ -49,6 +49,8 @@ import static java.util.Optional.ofNullable;
 import static org.sonar.core.util.stream.MoreCollectors.toList;
 import static org.sonar.db.permission.OrganizationPermission.PROVISION_PROJECTS;
 import static org.sonar.server.es.SearchOptions.MAX_LIMIT;
+import static org.sonar.server.project.Visibility.PRIVATE;
+import static org.sonar.server.project.Visibility.PUBLIC;
 import static org.sonar.server.project.ws.ProjectsWsSupport.PARAM_ORGANIZATION;
 import static org.sonar.server.ws.WsUtils.writeProtobuf;
 
@@ -125,7 +127,7 @@ public class ProvisionedAction implements ProjectsWsAction {
       writeIfNeeded("key", project.key(), compBuilder::setKey, desiredFields);
       writeIfNeeded("name", project.name(), compBuilder::setName, desiredFields);
       writeIfNeeded("creationDate", project.getCreatedAt(), compBuilder::setCreationDate, desiredFields);
-      writeIfNeeded("visibility", project.isPrivate() ? "private" : "public", compBuilder::setVisibility, desiredFields);
+      writeIfNeeded("visibility", project.isPrivate() ? PRIVATE.getLabel() : PUBLIC.getLabel(), compBuilder::setVisibility, desiredFields);
       return compBuilder.build();
     }).collect(toList());
   }

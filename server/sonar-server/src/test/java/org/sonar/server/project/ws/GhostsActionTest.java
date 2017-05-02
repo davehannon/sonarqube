@@ -72,7 +72,7 @@ public class GhostsActionTest {
     assertThat(action.params()).hasSize(5);
 
     Param organization = action.param("organization");
-    assertThat(organization.description()).isEqualTo("the organization key");
+    assertThat(organization.description()).isEqualTo("Organization key");
     assertThat(organization.since()).isEqualTo("6.3");
     assertThat(organization.isRequired()).isFalse();
     assertThat(organization.isInternal()).isTrue();
@@ -96,12 +96,14 @@ public class GhostsActionTest {
       "    {" +
       "      \"uuid\": \"" + ghost1.uuid() + "\"," +
       "      \"key\": \"" + ghost1.key() + "\"," +
-      "      \"name\": \"" + ghost1.name() + "\"" +
+      "      \"name\": \"" + ghost1.name() + "\"," +
+      "      \"visibility\": \"private\"" +
       "    }," +
       "    {" +
       "      \"uuid\": \"" + ghost2.uuid() + "\"," +
       "      \"key\": \"" + ghost2.key() + "\"," +
-      "      \"name\": \"" + ghost2.name() + "\"" +
+      "      \"name\": \"" + ghost2.name() + "\"," +
+      "      \"visibility\": \"private\"" +
       "    }" +
       "  ]" +
       "}");
