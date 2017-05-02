@@ -96,7 +96,7 @@ export default class ChangeVisibilityForm extends React.PureComponent {
             </div>
           ))}
 
-          <div className="alert alert-warning ">
+          <div className="alert alert-warning">
             {translate('organization.change_visibility_form.warning')}
           </div>
         </div>

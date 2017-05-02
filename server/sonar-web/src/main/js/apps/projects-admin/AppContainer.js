@@ -53,13 +53,10 @@ const mapStateToProps = state => ({
 const onVisibilityChange = (organization, visibility) => dispatch => {
   const currentVisibility = organization.projectVisibility;
   dispatch(receiveOrganizations([{ ...organization, projectVisibility: visibility }]));
-  changeProjectVisibility(organization.key, visibility).then(
-    () => {},
-    error => {
-      onFail(dispatch)(error);
-      dispatch(receiveOrganizations([{ ...organization, projectVisibility: currentVisibility }]));
-    }
-  );
+  changeProjectVisibility(organization.key, visibility).catch(error => {
+    onFail(dispatch)(error);
+    dispatch(receiveOrganizations([{ ...organization, projectVisibility: currentVisibility }]));
+  });
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

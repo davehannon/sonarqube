@@ -71,7 +71,7 @@ export default class Header extends React.PureComponent {
 
     return (
       <header className="page-header">
-        <h1 className="page-title">Projects Management</h1>
+        <h1 className="page-title">{translate('projects_management')}</h1>
         <div className="page-actions">
           {organization != null &&
             <span className="big-spacer-right">
@@ -81,7 +81,7 @@ export default class Header extends React.PureComponent {
                 {translate('visibility', organization.projectVisibility)}
               </strong>
               <a
-                className="little-spacer-left icon-edit"
+                className="spacer-left icon-edit"
                 href="#"
                 onClick={this.handleChangeVisibilityClick}
               />
@@ -89,11 +89,7 @@ export default class Header extends React.PureComponent {
           {this.renderCreateButton()}
         </div>
         <p className="page-description">
-          Use this page to delete multiple projects at once, or to provision projects
-          {' '}
-          if you would like to configure them before the first analysis. Note that once
-          {' '}
-          a project is provisioned, you have access to perform all project configurations on it.
+          {translate('projects_management.page.description')}
         </p>
 
         {this.state.visibilityForm &&

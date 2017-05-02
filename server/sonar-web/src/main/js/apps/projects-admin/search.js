@@ -157,13 +157,13 @@ export default class Search extends React.PureComponent {
               </td>
               <td className="thin nowrap text-middle">
                 <button className="spacer-right" onClick={this.bulkApplyTemplate}>
-                  Bulk Apply Permission Template
+                  {translate('permission_templates.bulk_apply_permission_template')}
                 </button>
                 <button
                   onClick={this.deleteProjects}
                   className="button-red"
                   disabled={!isSomethingSelected}>
-                  Delete
+                  {translate('delete')}
                 </button>
               </td>
             </tr>
