@@ -88,12 +88,6 @@ export default class App extends React.PureComponent {
     this.mounted = false;
   }
 
-  startLoading = () => {
-    if (this.mounted) {
-      this.setState({ loading: true });
-    }
-  };
-
   stopLoading = () => {
     if (this.mounted) {
       this.setState({ loading: false });
@@ -300,24 +294,18 @@ export default class App extends React.PureComponent {
 
   turnProjectToPublic = () => {
     this.props.onComponentChange({ visibility: 'public' });
-    api.changeProjectVisibility(this.props.component.key, 'public').then(
-      () => {},
-      error => {
-        this.props.onComponentChange({ visibility: 'private' });
-        this.props.onRequestFail(error);
-      }
-    );
+    api.changeProjectVisibility(this.props.component.key, 'public').catch(error => {
+      this.props.onComponentChange({ visibility: 'private' });
+      this.props.onRequestFail(error);
+    });
   };
 
   turnProjectToPrivate = () => {
     this.props.onComponentChange({ visibility: 'private' });
-    api.changeProjectVisibility(this.props.component.key, 'private').then(
-      () => {},
-      error => {
-        this.props.onComponentChange({ visibility: 'public' });
-        this.props.onRequestFail(error);
-      }
-    );
+    api.changeProjectVisibility(this.props.component.key, 'private').catch(error => {
+      this.props.onComponentChange({ visibility: 'public' });
+      this.props.onRequestFail(error);
+    });
   };
 
   openDisclaimer = () => {
@@ -341,10 +329,11 @@ export default class App extends React.PureComponent {
           loadHolders={this.loadHolders}
         />
         <PageError />
-        <VisibilitySelector
-          onChange={this.handleVisibilityChange}
-          visibility={this.props.component.visibility}
-        />
+        {this.props.component.qualifier === 'TRK' &&
+          <VisibilitySelector
+            onChange={this.handleVisibilityChange}
+            visibility={this.props.component.visibility}
+          />}
         {this.state.disclaimer &&
           <PublicProjectDisclaimer
             component={this.props.component}

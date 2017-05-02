@@ -79,7 +79,7 @@ export default class PageHeader extends React.PureComponent {
 
         <div className="page-description">
           <p>{description}</p>
-          <p>{visibilityDescription}</p>
+          {visibilityDescription != null && <p>{visibilityDescription}</p>}
         </div>
       </header>
     );
