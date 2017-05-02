@@ -29,7 +29,7 @@ class ComponentNavBreadcrumbs extends React.PureComponent {
   static propTypes = {
     breadcrumbs: React.PropTypes.array,
     component: React.PropTypes.shape({
-      visibility: React.PropTypes.string.isRequired
+      visibility: React.PropTypes.string
     }).isRequired
   };
 
